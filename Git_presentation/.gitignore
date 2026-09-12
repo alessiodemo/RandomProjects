@@ -1,0 +1,25 @@
+# LaTeX compilation artifacts
+*.aux
+*.log
+*.out
+*.pdf
+*.toc
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+*.fls
+*.fdb_latexmk
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+
+# editor temporary files
+*.swp
+*.tmp
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
