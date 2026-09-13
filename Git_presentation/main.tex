@@ -8,8 +8,16 @@
 \usetikzlibrary{positioning, arrows.meta}
 
 \usetheme{Madrid}
+\usecolortheme{beaver}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}{}
+\setbeamercolor{normal text}{fg=black,bg=gray!12}
+\setbeamercolor{title}{fg=black}
+\setbeamercolor{frametitle}{fg=black}
+\setbeamercolor{block title}{bg=gray!30, fg=black}
+\setbeamercolor{block body}{bg=gray!15, fg=black}
+\setbeamercolor{alertblock title}{bg=gray!40, fg=black}
+\setbeamercolor{alertblock body}{bg=gray!20, fg=black}
 
 \title[Git Basics]{Git: Version Control System}
 \author[Alessio]{Alessio}
@@ -24,35 +32,35 @@
 \begin{frame}{What is Git?}
   \begin{itemize}
     \item Git is a distributed version control system.
-    \item It tracks changes in the project over time.
-    \item It helps teamwork without losing updates.
-    \item Each saved change is a \textbf{commit}.
+    \item It tracks project changes over time.
+    \item It helps teams collaborate without losing work.
+    \item Every saved update is a \textbf{commit}.
   \end{itemize}
 
-  \vspace{0.2cm}
+  \vspace{0.1cm}
   \begin{center}
     \begin{tikzpicture}[
-      box/.style={draw, rounded corners, fill=blue!10, minimum width=2.2cm, minimum height=0.8cm, align=center, font=\scriptsize},
-      arrow/.style={->, thick, >=Stealth}
+      box/.style={draw, rounded corners, fill=gray!20, minimum width=1.9cm, minimum height=0.68cm, align=center, font=\tiny},
+      arrow/.style={->, thick, >=Stealth, gray!70}
     ]
       \node[box] (wd) {Working Directory};
-      \node[box, right=1.4cm of wd] (stage) {Staging Area};
-      \node[box, right=1.4cm of stage] (repo) {Local Repository};
-      \node[box, below=1.0cm of repo] (remote) {Remote Repository};
+      \node[box, right=1.1cm of wd] (stage) {Staging Area};
+      \node[box, right=1.1cm of stage] (repo) {Local Repository};
+      \node[box, below=0.9cm of repo] (remote) {Remote Repository};
 
       \draw[arrow] (wd) -- node[above, font=\tiny]{git add} (stage);
       \draw[arrow] (stage) -- node[above, font=\tiny]{git commit} (repo);
       \draw[arrow] (repo) -- node[right, font=\tiny]{git push} (remote);
+      \draw[arrow] (remote) -- node[left, font=\tiny]{git pull} (repo);
     \end{tikzpicture}
   \end{center}
 
-  \vspace{0.15cm}
+  \vspace{0.1cm}
   \begin{block}{Why use it?}
     \begin{itemize}
       \item Recover previous versions
       \item Work on multiple features
       \item Collaborate safely
-      \item Avoid overwriting others
     \end{itemize}
   \end{block}
 \end{frame}
@@ -60,28 +68,32 @@
 \begin{frame}[fragile]{Main commands}
   \scriptsize
   \begin{lstlisting}[language=bash]
-# initialize repo
+# initialize repository
 $ git init
 
-# status
+# check status
 $ git status
 
 # add files
 $ git add file_name
 
-# commit
+# save a snapshot
 $ git commit -m "message"
 
-# list branches
-$ git branch
-
-# new branch
+# create a branch
 $ git checkout -b new_feature
+
+# update local repo from remote
+$ git pull origin main
   \end{lstlisting}
 
-  \vspace{0.15cm}
+  \vspace{0.08cm}
   \begin{alertblock}{Key idea}
-    A repository keeps project history, while branches let you work independently from the main version.
+    \small
+    \begin{minipage}{0.9\textwidth}
+      \textbf{git push} sends local changes to the remote repository.\newline
+      \textbf{git pull} updates your local copy from the remote repository.
+    \end{minipage}
   \end{alertblock}
 \end{frame}
 
