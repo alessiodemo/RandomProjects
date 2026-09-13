@@ -46,12 +46,12 @@
       \node[box] (wd) {Working Directory};
       \node[box, right=1.1cm of wd] (stage) {Staging Area};
       \node[box, right=1.1cm of stage] (repo) {Local Repository};
-      \node[box, below=0.9cm of repo] (remote) {Remote Repository};
+      \node[box, below=0.8cm of repo] (remote) {Remote Repository};
 
       \draw[arrow] (wd) -- node[above, font=\tiny]{git add} (stage);
       \draw[arrow] (stage) -- node[above, font=\tiny]{git commit} (repo);
-      \draw[arrow] (repo) -- node[right, font=\tiny]{git push} (remote);
-      \draw[arrow] (remote) -- node[left, font=\tiny]{git pull} (repo);
+      \draw[arrow, red!70] ([yshift=-2pt]repo.south east) to[out=-30, in=30] node[right, font=\tiny]{git push} ([yshift=-2pt]remote.north east);
+      \draw[arrow, blue!70] ([yshift=2pt]remote.north west) to[out=150, in=-150] node[left, font=\tiny]{git pull} ([yshift=2pt]repo.south west);
     \end{tikzpicture}
   \end{center}
 
