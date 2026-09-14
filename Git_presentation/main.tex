@@ -64,8 +64,8 @@
 
         \draw[arrow] (wd) -- node[right, labelbox]{git add} (stage);
         \draw[arrow] (stage) -- node[right, labelbox]{git commit} (repo);
-        \draw[arrow, red!70] ([xshift=5pt]repo.east) -- node[right, labelbox]{git push} ([xshift=5pt]remote.east);
-        \draw[arrow, blue!70] ([xshift=-5pt]remote.west) -- node[left, labelbox]{git pull} ([xshift=-5pt]repo.west);
+        \draw[red!70, ->, thick] ([xshift=5pt]repo.east) -- node[right, labelbox]{git push} ([xshift=5pt]remote.east);
+        \draw[blue!70, ->, thick] ([xshift=-5pt]remote.west) -- node[left, labelbox]{git pull} ([xshift=-5pt]repo.west);
       \end{tikzpicture}%
       }
     \end{columns}
